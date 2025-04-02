@@ -334,16 +334,16 @@ class CANoe:
     def sleep(self, ms: int):
         time.sleep(ms / 1000)
 
-if __name__ == '__main__':
-    canoe = CANoe()
-    canoe.open_cfg("DiagCANoeProject/DiagCANoeProject.cfg")
-    canoe.start_measurement()
-    #开始记录日志
+# if __name__ == '__main__':
+#     canoe = CANoe()
+#     canoe.open_cfg("DiagCANoeProject/DiagCANoeProject.cfg")
+#     canoe.start_measurement()
+#     #开始记录日志
     
-    canoe.init_service("CAN1", "DiagTest")
-    canoe._diag_Request("10 01", stream_flag=True)
-    canoe._diag_Response()
-    canoe._diag_Request("10 03", stream_flag=True)
-    canoe._diag_Response()
-    canoe._diag_Request("22 F1 86", stream_flag=True)
-    canoe._diag_Response()
+#     canoe.init_service("CAN1", "DiagTest")
+#     canoe._diag_Request("10 01", stream_flag=True)
+#     canoe._diag_Response()
+#     canoe._diag_Request("10 03", stream_flag=True)
+#     canoe._diag_Response()
+#     canoe._diag_Request("22 F1 86", stream_flag=True)
+#     canoe._diag_Response()

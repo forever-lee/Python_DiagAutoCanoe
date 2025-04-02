@@ -2,9 +2,10 @@ import os
 
 import allure
 import pytest
+import ctypes
 
 from RunScript import DiagnoseRun
-
+from ctypes import *
 
 @allure.feature("诊断测试类")
 class TestDiagnose:
@@ -20,10 +21,10 @@ class TestDiagnose:
         cls.run_script.cleanup()
         print("清理CANoe测试工程环境")
 
-    @allure.title("诊断测试10服务")
-    @allure.description("测试10 01服务")
-    def test_diag_0x10_1(self):
-        self.run_script.diag_test("", "10 01", "50 01 00")
+    # @allure.title("诊断测试10服务")
+    # @allure.description("测试10 01服务")
+    # def test_diag_0x10_1(self):
+    #     self.run_script.diag_test("", "10 01", "50 01 00 32 01 F4")
 
     # @allure.title("诊断测试11服务")
     # @allure.description("测试11 01服务")
@@ -38,17 +39,16 @@ class TestDiagnose:
     @allure.title("诊断测试10服务进入扩展会话")
     @allure.description("测试10 03服务进入扩展会话")
     def test_diag_0x10_3(self):
-        self.run_script.diag_test("03", "10 03", "50 03 00")
+        self.run_script.diag_test("", "10 03", "50 03 00 32 01 f4")
 
-    # @allure.title("诊断测试27服务")
-    # @allure.description("测试27 03服务")
-    # def test_diag_0x27_1(self):
-    #     self.run_script.diag_test("", "27 00 01", "67 00 00")
-
+    @allure.title("诊断测试27服务")
+    @allure.description("27正常解锁APP")
+    def test_diag_0x27_1(self):
+        self.run_script.security_access("03")
     @allure.title("诊断测试22服务")
     @allure.description("测试22 F1 86服务")
     def test_diag_0x22_1(self):
-        self.run_script.diag_test("", "22 F1 86", "62 F1 86 03")
+        self.run_script.diag_test("03", "22 F1 86", "62 F1 86 03")
 
     # @allure.title("诊断测试28服务")
     # @allure.description("测试28 01服务")
